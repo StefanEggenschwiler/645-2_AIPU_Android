@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by Arnaud on 27.11.2015.
  */
-public class New {
+public class News {
 
     private int IdNew;
     private User user;
