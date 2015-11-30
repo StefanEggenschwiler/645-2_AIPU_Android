@@ -2,6 +2,7 @@ package ch.hevs.aipu_2016_guide;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -23,9 +25,14 @@ public class ShowSpeakers extends Fragment {
 
     ArrayList<Speaker> speakers = new ArrayList<Speaker>();
 
+
+
     public ShowSpeakers() {
         // Empty constructor required for fragment subclasses
+
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
