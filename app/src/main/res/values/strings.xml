@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">AIPU_2016_Guide</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="items_menu">
+        <item>Home</item>
+        <item>Program</item>
+        <item>Speakers</item>
+        <item>Partners</item>
+        <item>Organisers</item>
+        <item>Map</item>
+        <item>Feedback</item>
+        <item>About</item>
+    </string-array>
+
+    <string name="menu">Menu</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="title_activity_details_speaker">Details speaker</string>
 </resources>

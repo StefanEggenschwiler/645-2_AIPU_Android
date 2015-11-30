@@ -17,6 +17,16 @@ public class Speaker {
     private String Informations;
     private Date Timestamp;
 
+    public Speaker(int IdSpeaker, String Name, String Firstname, String Email, String Function, String Website, String Informations){
+        this.IdSpeaker = IdSpeaker;
+        this.Name = Name;
+        this.Firstname = Firstname;
+        this.Email = Email;
+        this.Function = Function;
+        this.Website = Website;
+        this.Informations = Informations;
+    }
+
 
     public int getIdSpeaker() {
         return IdSpeaker;
