@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteAbortException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import ch.hevs.aipu_2016_guide.database.SQLModel.*;
+import ch.hevs.aipu_2016_guide.object.Organiser;
 
 /**
  * Created by Arnaud on 27.11.2015.
@@ -29,11 +31,26 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(UserEntry.CREATE_TABLE_USER);
+        db.execSQL(NewsEntry.CREATE_TABLE_NEWS);
+        db.execSQL(PartnerEntry.CREATE_TABLE_PARTNER);
+        db.execSQL(OrganiserEntry.CREATE_TABLE_ORGANISER);
+        db.execSQL(RoomsEntry.CREATE_TABLE_ROOMS);
+        db.execSQL(SpeakersEntry.CREATE_TABLE_SPEAKER);
+        db.execSQL(TalksEntry.CREATE_TABLE_TALKS);
+        db.execSQL(TalkSpeakerEntry.CREATE_TABLE_TALKSPEAKER);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS "+UserEntry.CREATE_TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS "+NewsEntry.CREATE_TABLE_NEWS);
+        db.execSQL("DROP TABLE IF EXISTS "+PartnerEntry.CREATE_TABLE_PARTNER);
+        db.execSQL("DROP TABLE IF EXISTS "+OrganiserEntry.CREATE_TABLE_ORGANISER);
+        db.execSQL("DROP TABLE IF EXISTS "+RoomsEntry.CREATE_TABLE_ROOMS);
+        db.execSQL("DROP TABLE IF EXISTS "+SpeakersEntry.CREATE_TABLE_SPEAKER);
+        db.execSQL("DROP TABLE IF EXISTS "+TalksEntry.CREATE_TABLE_TALKS);
+        db.execSQL("DROP TABLE IF EXISTS "+TalkSpeakerEntry.CREATE_TABLE_TALKSPEAKER);
+        onCreate(db);
     }
 }
