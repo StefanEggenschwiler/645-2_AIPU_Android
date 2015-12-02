@@ -17,4 +17,8 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="title_activity_details_speaker">Details speaker</string>
+    <string name="upcoming_talks">Upcoming talks</string>
+    <string name="latest_news">Latest news</string>
+    <string name="title_conference">29th Conference of the International Association of University Pedagogy</string>
+    <string name="date_conference">6 - 9 June 2016</string>
 </resources>
