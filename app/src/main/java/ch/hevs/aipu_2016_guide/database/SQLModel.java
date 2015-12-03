@@ -38,7 +38,7 @@ public class SQLModel {
         public static final String KEY_USERNAME="Username";
 
         //Creation of table
-        public static final String CREATE_TABLE_USER="Create Table"
+        public static final String CREATE_TABLE_USER="Create Table "
                 +Table_Users+"( "+KEY_ID
                 +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_USERNAME
                 +" TEXT NOT NULL);,";
@@ -57,13 +57,13 @@ public class SQLModel {
         public static final String KEY_TIMESTAMP="Timestamp";
 
         //Creation of table
-        public static final String CREATE_TABLE_PARTNER="Create Table"
+        public static final String CREATE_TABLE_PARTNER="Create Table "
                 +Table_Partner+"("+KEY_ID
                 +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_NAME
                 +" TEXT NOT NULL,"+KEY_DESCRIPTION
                 +" TEXT NOT NULL,"+KEY_WEBSITE
                 +" TEXT NOT NULL,"+KEY_LOGO
-                +" BLOB NOT NULL"+KEY_TIMESTAMP
+                +" BLOB NOT NULL,"+KEY_TIMESTAMP
                 +" TEXT NOT NULL);";
     }
     public abstract class OrganiserEntry implements BaseColumns
@@ -81,7 +81,7 @@ public class SQLModel {
         public static final String KEY_TIMESTAMP="Timestamp";
 
         //Creation of table
-        public static final String CREATE_TABLE_ORGANISER="Create Table"
+        public static final String CREATE_TABLE_ORGANISER="Create Table "
                 +Table_Organisers+"("+KEY_ID
                 +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_NAME
                 +" TEXT NOT NULL,"+KEY_FIRSTNAME
@@ -103,7 +103,7 @@ public class SQLModel {
         public static final String KEY_TIMESTAMP="Timestamp";
 
         //Creation of table
-        public static final String CREATE_TABLE_ROOMS="Create Table"
+        public static final String CREATE_TABLE_ROOMS="Create Table "
                 +Table_Rooms+"("+KEY_ID
                 +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_NAME
                 +" TEXT NOT NULL,"+KEY_FLOOR
@@ -128,7 +128,7 @@ public class SQLModel {
         public static final String KEY_TIMESTAMP="Timestamp";
 
         //Creation of table
-        public static final String CREATE_TABLE_SPEAKER="Create Table"
+        public static final String CREATE_TABLE_SPEAKER="Create Table "
                 +Table_Speaker+"("+KEY_ID
                 +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_NAME
                 +" TEXT NOT NULL,"+KEY_FIRSTNAME
@@ -157,7 +157,7 @@ public class SQLModel {
         public static final String KEY_TIMESTAMP="Timestamp";
 
         //Creation of table
-        public static final String CREATE_TABLE_TALKS="Create Table"
+        public static final String CREATE_TABLE_TALKS="Create Table "
                 +Table_Talks+"("+KEY_ID
                 +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_TITLE
                 +" TEXT NOT NULL,"+KEY_DESCRIPTION
@@ -178,7 +178,7 @@ public class SQLModel {
         public static final String KEY_IDSPEAKER="IdSpeaker";
 
         //Creation of table
-        public static final String CREATE_TABLE_TALKSPEAKER="Create Table"
+        public static final String CREATE_TABLE_TALKSPEAKER="Create Table "
                 +Table_TalksSpeaker+"("+KEY_IDTALK
                 +" INTEGER NOT NULL,"+KEY_IDSPEAKER
                 +" INTEGER NOT NULL,FOREIGN KEY("+KEY_IDTALK+") REFERENCES Talk(IdTalk)," +

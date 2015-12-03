@@ -3,6 +3,7 @@ package ch.hevs.aipu_2016_guide;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import ch.hevs.aipu_2016_guide.database.SQLiteHelper;
 
 /**
  * Created by Fabien on 27.11.2015.
@@ -29,6 +32,10 @@ public class MainActivity extends AppCompatActivity  {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        //Create of database
+        SQLiteHelper dbHelper = new SQLiteHelper(this);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
