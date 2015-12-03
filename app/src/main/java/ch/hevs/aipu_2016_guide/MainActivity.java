@@ -2,19 +2,31 @@ package ch.hevs.aipu_2016_guide;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
+import ch.hevs.aipu_2016_guide.database.RestSpeaker;
 import ch.hevs.aipu_2016_guide.database.SQLiteHelper;
 
 /**
@@ -29,16 +41,20 @@ public class MainActivity extends AppCompatActivity  {
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private ListView mDrawerList;
+    private TextView responseView;
+    private ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         //Create of database
         SQLiteHelper dbHelper = new SQLiteHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-
+        progressBar=(ProgressBar) findViewById(R.id.progressBar);
+        responseView=(TextView) findViewById(R.id.responseView);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-
+        RestSpeaker restSpeaker=new RestSpeaker(progressBar,responseView);
+        restSpeaker.execute();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         items_menu = getResources().getStringArray(R.array.items_menu);
