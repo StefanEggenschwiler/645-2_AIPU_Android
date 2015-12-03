@@ -3,14 +3,13 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/iw_picture_speaker"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/ic_settings" />
+        android:layout_marginTop="5dp" />
     <TextView
         android:id="@+id/speaker_name"
         android:layout_width="wrap_content"
@@ -18,8 +17,8 @@
         android:textSize="20sp"
         android:paddingTop="5dp"
         android:text="Firstname - Lastname"
-        android:layout_alignTop="@+id/icon"
-        android:layout_toRightOf="@+id/icon"
-        android:layout_toEndOf="@+id/icon" />
+        android:layout_alignTop="@+id/iw_picture_speaker"
+        android:layout_toRightOf="@+id/iw_picture_speaker"
+        android:layout_toEndOf="@+id/iw_picture_speaker" />
 
 </RelativeLayout>

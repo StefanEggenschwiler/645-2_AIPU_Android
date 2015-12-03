@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity  {
 
         //Set the default fragment as the welcome page
         selectItem(0);
+
+
     }
 
     public void Choose(View view) {
