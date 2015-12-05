@@ -94,12 +94,6 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-    public void Choose(View view) {
-        Intent intent = new Intent(this, DetailsSpeaker.class);
-
-        startActivity(intent);
-    }
-
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
@@ -118,6 +112,8 @@ public class MainActivity extends AppCompatActivity  {
             case 2 : fragment = new ShowSpeakers();
                 break;
             case 3 : fragment = new ShowPartners();
+                break;
+            case 4 : fragment = new ShowOrganisers();
                 break;
             default : fragment = new WelcomePage();
                 break;

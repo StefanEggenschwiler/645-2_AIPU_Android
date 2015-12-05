@@ -21,4 +21,14 @@
         android:layout_toRightOf="@+id/iw_picture_partner"
         android:layout_toEndOf="@+id/iw_picture_partner" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Function - Company"
+        android:id="@+id/tw_function_organiser"
+        android:layout_below="@+id/organiser_name"
+        android:layout_toRightOf="@+id/iw_picture_partner"
+        android:layout_toEndOf="@+id/iw_picture_partner" />
+
 </RelativeLayout>

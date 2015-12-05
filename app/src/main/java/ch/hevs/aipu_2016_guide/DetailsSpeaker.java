@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,12 +29,12 @@ public class DetailsSpeaker extends AppCompatActivity {
         InputStream inputStream  = new ByteArrayInputStream(intent.getByteArrayExtra("picture"));
         Bitmap picture = BitmapFactory.decodeStream(inputStream);
 
-        tw_speaker_name = (TextView) findViewById(R.id.tw_speakername);
+        tw_speaker_name = (TextView) findViewById(R.id.tw_partnername);
         tw_speaker_email = (TextView) findViewById(R.id.tw_speakeremail);
         tw_speaker_function = (TextView) findViewById(R.id.tw_speakerfunction);
-        tw_speaker_website = (TextView) findViewById(R.id.tw_speakerwebsite);
+        tw_speaker_website = (TextView) findViewById(R.id.tw_partnerwebsite);
         tw_speaker_informations = (TextView) findViewById(R.id.tw_speakersinformations);
-        iw_picture = (ImageView) findViewById(R.id.iw_picture);
+        iw_picture = (ImageView) findViewById(R.id.iw_picture_speaker);
 
 
 

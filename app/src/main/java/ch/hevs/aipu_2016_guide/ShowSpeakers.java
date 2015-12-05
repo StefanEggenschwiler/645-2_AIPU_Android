@@ -1,8 +1,6 @@
 package ch.hevs.aipu_2016_guide;
 
-import android.app.Activity;
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,12 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import ch.hevs.aipu_2016_guide.adapter.ListSpeakersAdapter;
@@ -48,7 +44,7 @@ public class ShowSpeakers extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.show_speakers, container, false);
+        rootView = inflater.inflate(R.layout.show_listview, container, false);
 
         ReadSQL();
         GenerateListView();
@@ -91,11 +87,11 @@ public class ShowSpeakers extends Fragment {
 
     }
 
-    // With this method, we will display all the patients in the database
+    // With this method, we will display all the speakers in the database
     private void GenerateListView() {
 
 
-        ListView listViewspeakers = (ListView) rootView.findViewById(R.id.listView_speakers);
+        ListView listViewspeakers = (ListView) rootView.findViewById(R.id.listView_display);
         ListSpeakersAdapter ListAdapter = new ListSpeakersAdapter(getActivity(),speakers);
         listViewspeakers.setAdapter(ListAdapter);
 

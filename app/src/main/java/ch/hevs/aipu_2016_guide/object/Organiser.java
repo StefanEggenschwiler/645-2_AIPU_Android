@@ -1,5 +1,7 @@
 package ch.hevs.aipu_2016_guide.object;
 
+import android.graphics.Bitmap;
+
 import java.util.Date;
 
 /**
@@ -12,8 +14,18 @@ public class Organiser {
     private String Firstname;
     private String Function;
     private String Company;
-    private String Picture;
+    private Bitmap Picture;
     private Date Timestamp;
+
+    public Organiser(int IdOrganiser, String Name, String Firstname, String Function, String Company, Bitmap Picture){
+        this.IdOrganiser = IdOrganiser;
+        this.Name = Name;
+        this.Firstname = Firstname;
+        this.Function = Function;
+        this.Company = Company;
+        this.Picture = Picture;
+    }
+
 
     public int getIdOrganiser() {
         return IdOrganiser;
@@ -55,11 +67,11 @@ public class Organiser {
         Company = company;
     }
 
-    public String getPicture() {
+    public Bitmap getPicture() {
         return Picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(Bitmap picture) {
         Picture = picture;
     }
 

@@ -26,6 +26,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ch.hevs.aipu_2016_guide.MainActivity" />
         </activity>
+        <activity
+            android:name=".DetailsPartner"
+            android:label="@string/title_activity_details_partner"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ch.hevs.aipu_2016_guide.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

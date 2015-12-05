@@ -1,5 +1,7 @@
 package ch.hevs.aipu_2016_guide.object;
 
+import android.graphics.Bitmap;
+
 import java.util.Date;
 
 /**
@@ -11,8 +13,16 @@ public class Partner {
     private String Name;
     private String Description;
     private String Website;
-    private String Image;
+    private Bitmap Image;
     private Date Timestamp;
+
+    public Partner(int IdPartner, String Name, String Description, String Website, Bitmap Image){
+        this.IdPartner = IdPartner;
+        this.Name = Name;
+        this.Description = Description;
+        this.Website = Website;
+        this.Image = Image;
+    }
 
     public int getIdPartner() {
         return IdPartner;
@@ -46,11 +56,11 @@ public class Partner {
         Website = website;
     }
 
-    public String getImage() {
+    public Bitmap getImage() {
         return Image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Bitmap image) {
         Image = image;
     }
 

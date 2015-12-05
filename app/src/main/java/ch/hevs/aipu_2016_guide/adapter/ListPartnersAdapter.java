@@ -12,36 +12,36 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import ch.hevs.aipu_2016_guide.R;
-import ch.hevs.aipu_2016_guide.object.Speaker;
+import ch.hevs.aipu_2016_guide.object.Partner;
 
 /**
- * Created by Fabien on 29.11.2015.
+ * Created by Fabien on 04.12.2015.
  */
-public class ListSpeakersAdapter extends BaseAdapter {
+public class ListPartnersAdapter extends BaseAdapter {
 
-    private ArrayList<Speaker> SpeakersArray;
+    private ArrayList<Partner> PartnersArray;
     private Activity context;
 
-    public ListSpeakersAdapter(Activity context, ArrayList<Speaker> SpeakersArray){
+    public ListPartnersAdapter(Activity context, ArrayList<Partner> PartnersArray){
         this.context = context;
-        this.SpeakersArray = SpeakersArray;
+        this.PartnersArray = PartnersArray;
     }
 
     @Override
     public int getCount(){
-        return SpeakersArray.size();
+        return PartnersArray.size();
     }
 
 
 
     @Override
     public Object getItem(int position) {
-        return SpeakersArray.get(position);
+        return PartnersArray.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return SpeakersArray.get(position).getIdSpeaker();
+        return PartnersArray.get(position).getIdPartner();
     }
 
     @Override
@@ -52,13 +52,13 @@ public class ListSpeakersAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.listview_layout, null);
         }
 
-        Bitmap picture = SpeakersArray.get(position).getPicture();
+        Bitmap picture = PartnersArray.get(position).getImage();
 
-        TextView speaker_name = (TextView) convertView.findViewById(R.id.organiser_name);
-        ImageView speaker_picture = (ImageView) convertView.findViewById(R.id.iw_picture_partner);
+        TextView partner_name = (TextView) convertView.findViewById(R.id.organiser_name);
+        ImageView partner_picture = (ImageView) convertView.findViewById(R.id.iw_picture_partner);
 
-        speaker_name.setText(SpeakersArray.get(position).getName() + " " + (SpeakersArray.get(position).getFirstname()));
-        speaker_picture.setImageBitmap(picture);
+        partner_name.setText(PartnersArray.get(position).getName());
+        partner_picture.setImageBitmap(picture);
 
 
 
