@@ -1,11 +1,13 @@
 package ch.hevs.aipu_2016_guide.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteAbortException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import ch.hevs.aipu_2016_guide.database.SQLModel.*;
 import ch.hevs.aipu_2016_guide.object.Organiser;
+import ch.hevs.aipu_2016_guide.object.Speaker;
 
 /**
  * Created by Arnaud on 27.11.2015.
@@ -52,5 +54,21 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS "+TalksEntry.CREATE_TABLE_TALKS);
         db.execSQL("DROP TABLE IF EXISTS "+TalkSpeakerEntry.CREATE_TABLE_TALKSPEAKER);
         onCreate(db);
+    }
+    public void addSpeaker(Speaker speaker)
+    {
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put("Name",speaker.getName());
+        values.put("Firstname",speaker.getFirstname());
+        values.put("Email",speaker.getEmail());
+        values.put("Function",speaker.getFunction());
+        values.put("Company",speaker.getCompany());
+        values.put("Website",speaker.getWebsite());
+        values.put("Informations",speaker.getInformations());
+        values.put("Picture",speaker.getPicture().toString());
+        values.put("Timestamp",speaker.getTimestamp().toString());
+
+        sqLiteDatabase.insert("speaker",null,values);
     }
 }

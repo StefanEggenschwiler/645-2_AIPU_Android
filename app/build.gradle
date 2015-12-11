@@ -24,4 +24,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
+    compile files('D:/Profil/Documents/HES/645-2/Android/645-2_AIPU_Android/lib/gson-2.5.jar')
 }

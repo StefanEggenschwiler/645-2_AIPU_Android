@@ -78,7 +78,7 @@ public class ShowSpeakers extends Fragment {
         while(!c.isAfterLast()){
             InputStream inputStream  = new ByteArrayInputStream(c.getBlob(8));
             Bitmap picture = BitmapFactory.decodeStream(inputStream);
-            Speaker speaker = new Speaker((Integer.parseInt(c.getString(0))),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getString(5),c.getString(6),c.getString(7),picture);
+            Speaker speaker = new Speaker((Long.parseLong(c.getString(0))),c.getString(1),c.getString(2),c.getString(3),c.getString(4),c.getString(5),c.getString(6),c.getString(7),picture);
             speakers.add(speaker);
             c.moveToNext();
         }

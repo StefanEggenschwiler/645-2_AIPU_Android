@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Speaker {
 
-    private int IdSpeaker;
+    private Long IdSpeaker;
     private String Name;
     private String Firstname;
     private String Email;
@@ -20,7 +20,19 @@ public class Speaker {
     private Bitmap Picture;
     private Date Timestamp;
 
-    public Speaker(int IdSpeaker, String Name, String Firstname, String Email, String Function, String Company, String Website, String Informations, Bitmap Picture){
+    public Speaker(Long IdSpeaker, String Name, String Firstname, String Email, String Function, String Company, String Website, String Informations, Bitmap Picture, Date Timestamp){
+        this.IdSpeaker = IdSpeaker;
+        this.Name = Name;
+        this.Firstname = Firstname;
+        this.Email = Email;
+        this.Function = Function;
+        this.Company = Company;
+        this.Website = Website;
+        this.Informations = Informations;
+        this.Picture = Picture;
+        this.Timestamp=Timestamp;
+    }
+    public Speaker(Long IdSpeaker, String Name, String Firstname, String Email, String Function, String Company, String Website, String Informations, Bitmap Picture){
         this.IdSpeaker = IdSpeaker;
         this.Name = Name;
         this.Firstname = Firstname;
@@ -33,11 +45,11 @@ public class Speaker {
     }
 
 
-    public int getIdSpeaker() {
+    public Long getIdSpeaker() {
         return IdSpeaker;
     }
 
-    public void setIdSpeaker(int idSpeaker) {
+    public void setIdSpeaker(Long idSpeaker) {
         IdSpeaker = idSpeaker;
     }
 

@@ -3,7 +3,6 @@ package ch.hevs.aipu_2016_guide;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,14 +19,11 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
+import java.util.List;
 
-import javax.net.ssl.HttpsURLConnection;
-
-import ch.hevs.aipu_2016_guide.database.RestSpeaker;
 import ch.hevs.aipu_2016_guide.database.SQLiteHelper;
+import ch.hevs.aipu_2016_guide.database.RequestWebService;
+import ch.hevs.aipu_2016_guide.object.Speaker;
 
 /**
  * Created by Fabien on 27.11.2015.
@@ -43,18 +39,64 @@ public class MainActivity extends AppCompatActivity  {
     private ListView mDrawerList;
     private TextView responseView;
     private ProgressBar progressBar;
+    private List<Speaker> itemsList;
+
+    private class RequestSpeakersServiceTask extends AsyncTask<Void,Void,Void>{
+        private ProgressDialog dialog=new ProgressDialog(MainActivity.this);
+
+
+            @Override
+            protected void onPreExecute() {
+                //dialog.setMessage("Please wait..");
+                //dialog.show();
+            }
+
+            @Override
+            protected Void doInBackground(Void... unused) {
+                // The ItemService would contain the method showed
+                // in the previous paragraph
+                RequestWebService itemService = new RequestWebService();
+                try {
+                    itemsList = itemService.findAllItems();
+                } catch (Throwable e) {
+                    // handle exceptions
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void unused) {
+
+                // setListAdapter must not be called at doInBackground()
+                // since it would be executed in separate Thread
+                for(Speaker speaker:itemsList)
+                {
+                    Log.i("Test",speaker.getFirstname());
+                   // dialog.setMessage(speaker.getFirstname());
+                   // dialog.show();
+                }
+
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         //Create of database
         SQLiteHelper dbHelper = new SQLiteHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        progressBar=(ProgressBar) findViewById(R.id.progressBar);
-        responseView=(TextView) findViewById(R.id.responseView);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        RestSpeaker restSpeaker=new RestSpeaker(progressBar,responseView);
-        restSpeaker.execute();
+        RequestSpeakersServiceTask task=new RequestSpeakersServiceTask();
+        task.execute();
+
+
+
+
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         items_menu = getResources().getStringArray(R.array.items_menu);
@@ -141,11 +183,8 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
+        return mDrawerToggle.onOptionsItemSelected(item);
 
-        return false;
     }
 
     @Override
