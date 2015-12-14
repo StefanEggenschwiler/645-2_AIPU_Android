@@ -73,6 +73,11 @@ public class MainActivity extends AppCompatActivity  {
         try {
             List<Room> rooms = taskRoom.get();
             Log.i("Test", rooms.size()+"");
+            for(Room room:rooms)
+            {
+                dbHelper.addRoom(room);
+            }
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

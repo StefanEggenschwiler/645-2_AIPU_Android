@@ -6,40 +6,38 @@ import java.util.Date;
  * Created by Arnaud on 27.11.2015.
  */
 public class Room {
-    private Long IdRoom;
-    private String Name;
-    private String Floor;
-    private Date Timestamp;
+    private Long id;
+    private String name;
+    private String floor;
+    private Date lastModified;
 
-    public Long getIdRoom() {
-        return IdRoom;
-    }
+    public Long getIdRoom() {return id;}
 
     public void setIdRoom(Long idRoom) {
-        IdRoom = idRoom;
+        id = idRoom;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getFloor() {
-        return Floor;
+        return floor;
     }
 
     public void setFloor(String floor) {
-        Floor = floor;
+        floor = floor;
     }
 
     public Date getTimestamp() {
-        return Timestamp;
+        return lastModified;
     }
 
-    public void setTimestamp(Date timestamp) {
-        Timestamp = timestamp;
+    public void setTimestamp(Date lastModified) {
+        lastModified = lastModified;
     }
 }

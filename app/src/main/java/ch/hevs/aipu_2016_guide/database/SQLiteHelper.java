@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteAbortException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat;
 
 import ch.hevs.aipu_2016_guide.database.SQLModel.*;
 import ch.hevs.aipu_2016_guide.object.Organiser;
+import ch.hevs.aipu_2016_guide.object.Room;
 import ch.hevs.aipu_2016_guide.object.Speaker;
 
 /**
@@ -75,6 +77,17 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         values.put("Timestamp", speaker.getTimestamp().toString());
 
         sqLiteDatabase.insert("speaker", null, values);
+    }
+    public void addRoom(Room room)
+    {
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put("IdRoom",room.getIdRoom());
+        values.put("Name",room.getName());
+        values.put("Floor",room.getFloor());
+        values.put("Timestamp",room.getTimestamp().toString());
+        sqLiteDatabase.insert("room", null, values);
+        Log.i("Test","Room added");
     }
 
     public Long countRoom()
