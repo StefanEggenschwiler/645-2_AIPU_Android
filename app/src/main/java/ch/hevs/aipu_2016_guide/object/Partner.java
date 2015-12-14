@@ -9,14 +9,14 @@ import java.util.Date;
  */
 public class Partner {
 
-    private int IdPartner;
+    private Long IdPartner;
     private String Name;
     private String Description;
     private String Website;
     private Bitmap Image;
     private Date Timestamp;
 
-    public Partner(int IdPartner, String Name, String Description, String Website, Bitmap Image){
+    public Partner(Long IdPartner, String Name, String Description, String Website, Bitmap Image){
         this.IdPartner = IdPartner;
         this.Name = Name;
         this.Description = Description;
@@ -24,11 +24,11 @@ public class Partner {
         this.Image = Image;
     }
 
-    public int getIdPartner() {
+    public Long getIdPartner() {
         return IdPartner;
     }
 
-    public void setIdPartner(int idPartner) {
+    public void setIdPartner(Long idPartner) {
         IdPartner = idPartner;
     }
 

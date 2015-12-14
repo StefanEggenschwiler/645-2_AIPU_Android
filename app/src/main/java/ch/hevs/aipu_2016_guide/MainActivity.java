@@ -19,10 +19,14 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import ch.hevs.aipu_2016_guide.database.SQLiteHelper;
-import ch.hevs.aipu_2016_guide.database.RequestWebService;
+import ch.hevs.aipu_2016_guide.database.RoomsSyncro;
+import ch.hevs.aipu_2016_guide.object.Room;
 import ch.hevs.aipu_2016_guide.object.Speaker;
 
 /**
@@ -39,49 +43,12 @@ public class MainActivity extends AppCompatActivity  {
     private ListView mDrawerList;
     private TextView responseView;
     private ProgressBar progressBar;
-    private List<Speaker> itemsList;
-
-    private class RequestSpeakersServiceTask extends AsyncTask<Void,Void,Void>{
-        private ProgressDialog dialog=new ProgressDialog(MainActivity.this);
-
-
-            @Override
-            protected void onPreExecute() {
-                //dialog.setMessage("Please wait..");
-                //dialog.show();
-            }
-
-            @Override
-            protected Void doInBackground(Void... unused) {
-                // The ItemService would contain the method showed
-                // in the previous paragraph
-                RequestWebService itemService = new RequestWebService();
-                try {
-                    itemsList = itemService.findAllItems();
-                } catch (Throwable e) {
-                    // handle exceptions
-                }
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void unused) {
-
-                // setListAdapter must not be called at doInBackground()
-                // since it would be executed in separate Thread
-                for(Speaker speaker:itemsList)
-                {
-                    Log.i("Test",speaker.getFirstname());
-                   // dialog.setMessage(speaker.getFirstname());
-                   // dialog.show();
-                }
-
-                if (dialog.isShowing()) {
-                    dialog.dismiss();
-                }
-            }
-    }
-
+    private String roomUrl;
+    private String speakerUrl;
+    private String partnerUrl;
+    private String newsUrl;
+    private String talkUrl;
+    private String organiserUrl;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,8 +57,27 @@ public class MainActivity extends AppCompatActivity  {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        RequestSpeakersServiceTask task=new RequestSpeakersServiceTask();
-        task.execute();
+
+        //Check if database is empty
+        if(dbHelper.countRoom()!=0)
+        {
+            String time=dbHelper.getMaxDateRoom();
+            roomUrl="http://aipu-2016.appspot.com/resource/rooms/"+time;
+        }
+        else
+        {
+            roomUrl="http://aipu-2016.appspot.com/resource/rooms/";
+        }
+        RoomsSyncro taskRoom = new RoomsSyncro();
+        taskRoom.execute(roomUrl);
+        try {
+            List<Room> rooms = taskRoom.get();
+            Log.i("Test", rooms.size()+"");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
 
 

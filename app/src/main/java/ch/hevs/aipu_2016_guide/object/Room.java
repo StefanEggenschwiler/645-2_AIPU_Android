@@ -6,16 +6,16 @@ import java.util.Date;
  * Created by Arnaud on 27.11.2015.
  */
 public class Room {
-    private int IdRoom;
+    private Long IdRoom;
     private String Name;
     private String Floor;
     private Date Timestamp;
 
-    public int getIdRoom() {
+    public Long getIdRoom() {
         return IdRoom;
     }
 
-    public void setIdRoom(int idRoom) {
+    public void setIdRoom(Long idRoom) {
         IdRoom = idRoom;
     }
 

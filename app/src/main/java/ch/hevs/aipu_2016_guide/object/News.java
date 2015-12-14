@@ -7,26 +7,17 @@ import java.util.Date;
  */
 public class News {
 
-    private int IdNew;
-    private User user;
+    private Long IdNew;
     private String Title;
     private String Description;
     private Date date;
 
-    public int getIdNew() {
+    public Long getIdNew() {
         return IdNew;
     }
 
-    public void setIdNew(int idNew) {
+    public void setIdNew(Long idNew) {
         IdNew = idNew;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getTitle() {

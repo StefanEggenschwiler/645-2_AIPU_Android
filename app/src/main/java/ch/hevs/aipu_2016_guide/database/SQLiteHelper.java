@@ -5,6 +5,13 @@ import android.content.Context;
 import android.database.sqlite.SQLiteAbortException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
+
+
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import ch.hevs.aipu_2016_guide.database.SQLModel.*;
 import ch.hevs.aipu_2016_guide.object.Organiser;
 import ch.hevs.aipu_2016_guide.object.Speaker;
@@ -33,7 +40,6 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(UserEntry.CREATE_TABLE_USER);
         db.execSQL(NewsEntry.CREATE_TABLE_NEWS);
         db.execSQL(PartnerEntry.CREATE_TABLE_PARTNER);
         db.execSQL(OrganiserEntry.CREATE_TABLE_ORGANISER);
@@ -45,7 +51,6 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+UserEntry.CREATE_TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS "+NewsEntry.CREATE_TABLE_NEWS);
         db.execSQL("DROP TABLE IF EXISTS "+PartnerEntry.CREATE_TABLE_PARTNER);
         db.execSQL("DROP TABLE IF EXISTS "+OrganiserEntry.CREATE_TABLE_ORGANISER);
@@ -61,14 +66,30 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         ContentValues values=new ContentValues();
         values.put("Name",speaker.getName());
         values.put("Firstname",speaker.getFirstname());
-        values.put("Email",speaker.getEmail());
-        values.put("Function",speaker.getFunction());
-        values.put("Company",speaker.getCompany());
-        values.put("Website",speaker.getWebsite());
-        values.put("Informations",speaker.getInformations());
-        values.put("Picture",speaker.getPicture().toString());
-        values.put("Timestamp",speaker.getTimestamp().toString());
+        values.put("Email", speaker.getEmail());
+        values.put("Function", speaker.getFunction());
+        values.put("Company", speaker.getCompany());
+        values.put("Website", speaker.getWebsite());
+        values.put("Informations", speaker.getInformations());
+        values.put("Picture", speaker.getPicture().toString());
+        values.put("Timestamp", speaker.getTimestamp().toString());
 
-        sqLiteDatabase.insert("speaker",null,values);
+        sqLiteDatabase.insert("speaker", null, values);
+    }
+
+    public Long countRoom()
+    {
+        String sql="SELECT COUNT(*) FROM room";
+        SQLiteStatement statement=db.compileStatement(sql);
+        long count=statement.simpleQueryForLong();
+        return count;
+    }
+
+    public String getMaxDateRoom()
+    {
+        String sql="SELECT MAX(Timestamp) from room";
+        SQLiteStatement statement=db.compileStatement(sql);
+        return statement.simpleQueryForString();
+
     }
 }

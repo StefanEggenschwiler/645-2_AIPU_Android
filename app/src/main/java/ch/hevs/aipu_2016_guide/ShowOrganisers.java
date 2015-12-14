@@ -72,7 +72,7 @@ public class ShowOrganisers extends Fragment {
         while(!c.isAfterLast()){
             InputStream inputStream  = new ByteArrayInputStream(c.getBlob(5));
             Bitmap picture = BitmapFactory.decodeStream(inputStream);
-            Organiser organiser = new Organiser((Integer.parseInt(c.getString(0))),c.getString(1),c.getString(2),c.getString(3),c.getString(4),picture);
+            Organiser organiser = new Organiser((Long.parseLong(c.getString(0))),c.getString(1),c.getString(2),c.getString(3),c.getString(4),picture);
             organisers.add(organiser);
             c.moveToNext();
         }

@@ -8,7 +8,7 @@ import java.util.Set;
  */
 public class Talk {
 
-    private int IdTalk;
+    private Long IdTalk;
     private String Title;
     private String Description;
     private Set<Speaker> speakers;
@@ -18,11 +18,11 @@ public class Talk {
     private String Keywords;
     private Date Timestamp;
 
-    public int getIdTalk() {
+    public Long getIdTalk() {
         return IdTalk;
     }
 
-    public void setIdTalk(int idTalk) {
+    public void setIdTalk(Long idTalk) {
         IdTalk = idTalk;
     }
 

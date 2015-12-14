@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Organiser {
 
-    private int IdOrganiser;
+    private Long IdOrganiser;
     private String Name;
     private String Firstname;
     private String Function;
@@ -17,7 +17,7 @@ public class Organiser {
     private Bitmap Picture;
     private Date Timestamp;
 
-    public Organiser(int IdOrganiser, String Name, String Firstname, String Function, String Company, Bitmap Picture){
+    public Organiser(Long IdOrganiser, String Name, String Firstname, String Function, String Company, Bitmap Picture){
         this.IdOrganiser = IdOrganiser;
         this.Name = Name;
         this.Firstname = Firstname;
@@ -27,11 +27,11 @@ public class Organiser {
     }
 
 
-    public int getIdOrganiser() {
+    public Long getIdOrganiser() {
         return IdOrganiser;
     }
 
-    public void setIdOrganiser(int idOrganiser) {
+    public void setIdOrganiser(Long idOrganiser) {
         IdOrganiser = idOrganiser;
     }
 

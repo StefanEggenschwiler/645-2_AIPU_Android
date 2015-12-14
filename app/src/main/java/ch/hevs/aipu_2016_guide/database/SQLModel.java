@@ -14,7 +14,7 @@ public class SQLModel {
 
         //Column name
         public static final String KEY_ID="IdNews";
-        public static final String KEY_IDUSER="IdUser";
+        public static final String KEY_AUTHOR="Author";
         public static final String KEY_TITLE="Title";
         public static final String KEY_DESCRIPTION="Description";
         public static final String KEY_DATE="Date";
@@ -22,26 +22,11 @@ public class SQLModel {
         //Creation table
         public static final String CREATE_TABLE_NEWS="Create Table "
                 +Table_News+"( "+KEY_ID
-                +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_IDUSER
-                +" INTEGER NOT NULL,"+KEY_TITLE
+                +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_AUTHOR
+                +" TEXT NOT NULL,"+KEY_TITLE
                 +" TEXT NOT NULL," +KEY_DESCRIPTION
                 +" TEXT NOT NULL,"+KEY_DATE
-                +" TEXT, FOREIGN KEY("+KEY_IDUSER+") REFERENCES User(IdUser));";
-    }
-    public abstract class UserEntry implements BaseColumns
-    {
-        //Table name
-        public static final String Table_Users="user";
-
-        //Column name
-        public static final String KEY_ID="IdUser";
-        public static final String KEY_USERNAME="Username";
-
-        //Creation of table
-        public static final String CREATE_TABLE_USER="Create Table "
-                +Table_Users+"( "+KEY_ID
-                +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_USERNAME
-                +" TEXT NOT NULL);,";
+                +" TEXT);";
     }
     public abstract class PartnerEntry implements BaseColumns
     {

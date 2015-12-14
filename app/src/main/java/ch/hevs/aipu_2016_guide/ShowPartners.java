@@ -74,7 +74,7 @@ public class ShowPartners extends Fragment {
         while(!c.isAfterLast()){
             InputStream inputStream  = new ByteArrayInputStream(c.getBlob(4));
             Bitmap picture = BitmapFactory.decodeStream(inputStream);
-            Partner partner = new Partner((Integer.parseInt(c.getString(0))),c.getString(1),c.getString(2),c.getString(3),picture);
+            Partner partner = new Partner((Long.parseLong(c.getString(0))),c.getString(1),c.getString(2),c.getString(3),picture);
             partners.add(partner);
             c.moveToNext();
         }
