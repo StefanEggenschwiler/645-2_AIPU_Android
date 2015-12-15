@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Talk name"
+        android:id="@+id/tw_talkname"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Room"
+        android:id="@+id/tw_talkroom"
+        android:layout_below="@+id/tw_talkname"
+        android:layout_alignLeft="@+id/tw_talkname"
+        android:layout_alignStart="@+id/tw_talkname" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Hour"
+        android:autoLink="web"
+        android:id="@+id/tw_talkhour"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="25dp"
+        android:layout_below="@+id/tw_talkroom"
+        android:layout_toRightOf="@+id/iw_picture_conf"
+        android:layout_toEndOf="@+id/iw_picture_conf" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iw_picture_conf"
+        android:src="@drawable/logo_aipu2016"
+        android:layout_toLeftOf="@+id/tw_talkname"
+        android:layout_alignTop="@+id/tw_talkname"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/tw_talkhour" />
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/tw_talkhour">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Informations"
+        android:id="@+id/tw_talkinformatiions"
+        android:layout_weight="3.76" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

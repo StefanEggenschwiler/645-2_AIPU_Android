@@ -52,10 +52,11 @@ public class ListOrganisersAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.listview_organisers, null);
         }
 
+        //get the picture from the array
         Bitmap picture = OrganisersArray.get(position).getPicture();
 
-        TextView organiser_name = (TextView) convertView.findViewById(R.id.organiser_name);
-        ImageView organiser_picture = (ImageView) convertView.findViewById(R.id.iw_picture_partner);
+        TextView organiser_name = (TextView) convertView.findViewById(R.id.tw_name);
+        ImageView organiser_picture = (ImageView) convertView.findViewById(R.id.iw_picture);
 
         organiser_name.setText(OrganisersArray.get(position).getName() + " " + (OrganisersArray.get(position).getFirstname()));
         organiser_picture.setImageBitmap(picture);

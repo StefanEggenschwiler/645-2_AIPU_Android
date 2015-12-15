@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/tw_partnername"
+        android:id="@+id/tw_talkname"
         android:layout_marginTop="25dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -24,10 +24,10 @@
         android:layout_marginTop="7dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Email"
-        android:id="@+id/tw_speakeremail"
-        android:layout_below="@+id/tw_partnername"
-        android:layout_alignLeft="@+id/tw_partnername"
-        android:layout_alignStart="@+id/tw_partnername" />
+        android:id="@+id/tw_talkroom"
+        android:layout_below="@+id/tw_talkname"
+        android:layout_alignLeft="@+id/tw_talkname"
+        android:layout_alignStart="@+id/tw_talkname" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,9 +36,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Function"
         android:id="@+id/tw_speakerfunction"
-        android:layout_below="@+id/tw_speakeremail"
-        android:layout_alignLeft="@+id/tw_speakeremail"
-        android:layout_alignStart="@+id/tw_speakeremail" />
+        android:layout_below="@+id/tw_talkroom"
+        android:layout_alignLeft="@+id/tw_talkroom"
+        android:layout_alignStart="@+id/tw_talkroom" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Website"
         android:autoLink="web"
-        android:id="@+id/tw_partnerwebsite"
+        android:id="@+id/tw_talkhour"
         android:layout_below="@+id/tw_speakerfunction"
         android:layout_alignLeft="@+id/tw_speakerfunction"
         android:layout_alignStart="@+id/tw_speakerfunction" />
@@ -59,7 +59,7 @@
         android:id="@+id/tw_speakersinformations"
         android:autoLink="web"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@+id/tw_partnerwebsite"
+        android:layout_below="@+id/tw_talkhour"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="36dp"
@@ -72,10 +72,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/iw_picture_speaker"
         android:layout_marginRight="10dp"
-        android:layout_alignTop="@+id/tw_partnername"
+        android:layout_alignTop="@+id/tw_talkname"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/tw_partnername"
-        android:layout_alignBottom="@+id/tw_partnerwebsite" />
+        android:layout_toLeftOf="@+id/tw_talkname"
+        android:layout_alignBottom="@+id/tw_talkhour" />
 
 </RelativeLayout>

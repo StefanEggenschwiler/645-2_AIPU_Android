@@ -26,18 +26,19 @@ public class DetailsSpeaker extends AppCompatActivity {
 
         intent = getIntent();
 
+        //convert the image in bitmap format
         InputStream inputStream  = new ByteArrayInputStream(intent.getByteArrayExtra("picture"));
         Bitmap picture = BitmapFactory.decodeStream(inputStream);
 
-        tw_speaker_name = (TextView) findViewById(R.id.tw_partnername);
-        tw_speaker_email = (TextView) findViewById(R.id.tw_speakeremail);
+        //find the textview in the layout
+        tw_speaker_name = (TextView) findViewById(R.id.tw_talkname);
+        tw_speaker_email = (TextView) findViewById(R.id.tw_talkroom);
         tw_speaker_function = (TextView) findViewById(R.id.tw_speakerfunction);
-        tw_speaker_website = (TextView) findViewById(R.id.tw_partnerwebsite);
+        tw_speaker_website = (TextView) findViewById(R.id.tw_talkhour);
         tw_speaker_informations = (TextView) findViewById(R.id.tw_speakersinformations);
         iw_picture = (ImageView) findViewById(R.id.iw_picture_speaker);
 
-
-
+        //set the information of the speaker in the textviews
         tw_speaker_name.setText(intent.getExtras().getString("firstname") + " " + intent.getExtras().getString("lastname"));
         tw_speaker_email.setText(intent.getExtras().getString("email"));
         tw_speaker_function.setText(intent.getExtras().getString("function") + " - " + intent.getExtras().getString("company"));
@@ -46,6 +47,7 @@ public class DetailsSpeaker extends AppCompatActivity {
         iw_picture.setImageBitmap(picture);
     }
 
+    //close the activity
     public boolean onOptionsItemSelected(MenuItem item){
         finish();
         return true;

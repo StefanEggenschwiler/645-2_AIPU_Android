@@ -49,15 +49,18 @@ public class ListSpeakersAdapter extends BaseAdapter {
 
         if(convertView == null){
             // LayoutInflater class is used to instantiate layout XML file into its corresponding View objects.
-            convertView = LayoutInflater.from(context).inflate(R.layout.listview_layout, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.listview_organisers, null);
         }
 
+        //get the picture from the array
         Bitmap picture = SpeakersArray.get(position).getPicture();
 
-        TextView speaker_name = (TextView) convertView.findViewById(R.id.organiser_name);
-        ImageView speaker_picture = (ImageView) convertView.findViewById(R.id.iw_picture_partner);
+        TextView speaker_name = (TextView) convertView.findViewById(R.id.tw_name);
+        TextView speaker_function = (TextView) convertView.findViewById(R.id.tw_function);
+        ImageView speaker_picture = (ImageView) convertView.findViewById(R.id.iw_picture);
 
         speaker_name.setText(SpeakersArray.get(position).getName() + " " + (SpeakersArray.get(position).getFirstname()));
+        speaker_function.setText(SpeakersArray.get(position).getFunction() + " " + (SpeakersArray.get(position).getCompany()));
         speaker_picture.setImageBitmap(picture);
 
 

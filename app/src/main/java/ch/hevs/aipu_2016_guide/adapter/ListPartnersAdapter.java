@@ -52,10 +52,11 @@ public class ListPartnersAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.listview_layout, null);
         }
 
+        //get the picture from the array
         Bitmap picture = PartnersArray.get(position).getImage();
 
-        TextView partner_name = (TextView) convertView.findViewById(R.id.organiser_name);
-        ImageView partner_picture = (ImageView) convertView.findViewById(R.id.iw_picture_partner);
+        TextView partner_name = (TextView) convertView.findViewById(R.id.tw_name);
+        ImageView partner_picture = (ImageView) convertView.findViewById(R.id.iw_picture);
 
         partner_name.setText(PartnersArray.get(position).getName());
         partner_picture.setImageBitmap(picture);

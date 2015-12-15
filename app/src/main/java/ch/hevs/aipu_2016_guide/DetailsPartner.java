@@ -29,16 +29,18 @@ public class DetailsPartner extends AppCompatActivity {
 
         intent = getIntent();
 
+        //convert the image in bitmap format
         InputStream inputStream  = new ByteArrayInputStream(intent.getByteArrayExtra("picture"));
         Bitmap picture = BitmapFactory.decodeStream(inputStream);
 
-        tw_partner_name = (TextView) findViewById(R.id.tw_partnername);
-        tw_partner_website = (TextView) findViewById(R.id.tw_partnerwebsite);
+        //find the textview in the layout
+        tw_partner_name = (TextView) findViewById(R.id.tw_talkname);
+        tw_partner_website = (TextView) findViewById(R.id.tw_talkhour);
         tw_partner_informations = (TextView) findViewById(R.id.tw_partnersinformations);
-        iw_picture = (ImageView) findViewById(R.id.iw_picture_partner);
+        iw_picture = (ImageView) findViewById(R.id.iw_picture);
 
 
-
+        //set the information of the partners in the textviews
         tw_partner_name.setText(intent.getExtras().getString("name"));
         tw_partner_website.setText(intent.getExtras().getString("website"));
         tw_partner_informations.setText(intent.getExtras().getString("informations"));
