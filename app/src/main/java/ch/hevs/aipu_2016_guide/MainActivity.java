@@ -2,9 +2,7 @@ package ch.hevs.aipu_2016_guide;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.ProgressDialog;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,15 +17,14 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.Date;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import ch.hevs.aipu_2016_guide.database.SQLiteHelper;
-import ch.hevs.aipu_2016_guide.database.RoomsSyncro;
+import ch.hevs.aipu_2016_guide.object.Partner;
+import ch.hevs.aipu_2016_guide.syncronisation.PartnerSyncro;
+import ch.hevs.aipu_2016_guide.syncronisation.RoomsSyncro;
 import ch.hevs.aipu_2016_guide.object.Room;
-import ch.hevs.aipu_2016_guide.object.Speaker;
 
 /**
  * Created by Fabien on 27.11.2015.
@@ -58,7 +55,7 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        //Check if database is empty
+        //Check if table room is empty
         if(dbHelper.countRoom()!=0)
         {
             String time=dbHelper.getMaxDateRoom();
@@ -68,14 +65,43 @@ public class MainActivity extends AppCompatActivity  {
         {
             roomUrl="http://aipu-2016.appspot.com/resource/rooms/";
         }
+        //check if table partner is empty
+        if(dbHelper.countPartner()!=0)
+        {
+            String time=dbHelper.getMaxDatePartner();
+            partnerUrl="http://aipu-2016.appspot.com/resource/partners/"+time;
+        }
+        else
+        {
+            partnerUrl="http://aipu-2016.appspot.com/resource/partners/";
+        }
+
+        //Syncro for rooms
         RoomsSyncro taskRoom = new RoomsSyncro();
         taskRoom.execute(roomUrl);
         try {
             List<Room> rooms = taskRoom.get();
-            Log.i("Test", rooms.size()+"");
+            Log.i("Nb of room ", rooms.size()+"");
             for(Room room:rooms)
             {
                 dbHelper.addRoom(room);
+            }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        //Syncro for partner
+        PartnerSyncro taskPartner = new PartnerSyncro();
+        taskPartner.execute(partnerUrl);
+        try {
+            List<Partner> partners = taskPartner.get();
+            Log.i("Nb of partners ", partners.size()+"");
+            for(Partner partner:partners)
+            {
+                dbHelper.addPartner(partner);
             }
 
         } catch (InterruptedException e) {

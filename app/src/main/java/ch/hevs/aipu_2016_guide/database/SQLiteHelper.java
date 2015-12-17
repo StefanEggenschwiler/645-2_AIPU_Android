@@ -6,15 +6,20 @@ import android.database.sqlite.SQLiteAbortException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 
+import java.io.ByteArrayOutputStream;
+import java.sql.SQLData;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import ch.hevs.aipu_2016_guide.database.SQLModel.*;
+import ch.hevs.aipu_2016_guide.object.News;
 import ch.hevs.aipu_2016_guide.object.Organiser;
+import ch.hevs.aipu_2016_guide.object.Partner;
 import ch.hevs.aipu_2016_guide.object.Room;
 import ch.hevs.aipu_2016_guide.object.Speaker;
 
@@ -87,12 +92,58 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         values.put("Floor",room.getFloor());
         values.put("Timestamp",room.getTimestamp().toString());
         sqLiteDatabase.insert("room", null, values);
-        Log.i("Test","Room added");
+        Log.i("Adding room", "Room added");
+    }
+
+    public void addNews(News news)
+    {
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put("IdNews",news.getId());
+        values.put("Author",news.getAuthor());
+        values.put("Title",news.getTitle());
+        values.put("Article",news.getArticle());
+        values.put("CreationDate",news.getCreationDate().toString());
+        values.put("Timestamp",news.getLastmodified().toString());
+        sqLiteDatabase.insert("news",null,values);
+        Log.i("Adding news","news added");
+    }
+
+    public void addPartner(Partner partner)
+    {
+        SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
+        ContentValues values=new ContentValues();
+        values.put("IdPartner",partner.getId());
+        values.put("Name",partner.getName());
+        values.put("Description", partner.getDescription());
+        values.put("Website", partner.getWebsite());
+
+
+
+
+        values.put("Timestamp",partner.getLastmodified().toString());
+        sqLiteDatabase.insert("partner", null, values);
+        Log.i("Adding partner", "partner added");
+    }
+
+    public Long countNews()
+    {
+        String sql="SELECT COUNT(*) FROM news";
+        SQLiteStatement statement=db.compileStatement(sql);
+        long count=statement.simpleQueryForLong();
+        return count;
     }
 
     public Long countRoom()
     {
         String sql="SELECT COUNT(*) FROM room";
+        SQLiteStatement statement=db.compileStatement(sql);
+        long count=statement.simpleQueryForLong();
+        return count;
+    }
+    public Long countPartner()
+    {
+        String sql="SELECT COUNT(*) FROM partner";
         SQLiteStatement statement=db.compileStatement(sql);
         long count=statement.simpleQueryForLong();
         return count;
@@ -103,6 +154,17 @@ public class SQLiteHelper extends SQLiteOpenHelper{
         String sql="SELECT MAX(Timestamp) from room";
         SQLiteStatement statement=db.compileStatement(sql);
         return statement.simpleQueryForString();
-
+    }
+    public String getMaxDateNews()
+    {
+        String sql="SELECT MAX(Timestamp) from news";
+        SQLiteStatement statement=db.compileStatement(sql);
+        return statement.simpleQueryForString();
+    }
+    public String getMaxDatePartner()
+    {
+        String sql="SELECT MAX(Timestamp) from partner";
+        SQLiteStatement statement=db.compileStatement(sql);
+        return statement.simpleQueryForString();
     }
 }

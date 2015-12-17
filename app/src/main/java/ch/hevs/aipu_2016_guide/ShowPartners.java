@@ -100,7 +100,8 @@ public class ShowPartners extends Fragment {
                 Partner partnerchoose = partners.get(position);
 
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                partnerchoose.getImage().compress(Bitmap.CompressFormat.PNG, 100, stream);
+                Bitmap bm = BitmapFactory.decodeByteArray(byteArray, 0 ,byteArray.length);
+                partnerchoose.getLogo().compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
 
                 Intent intent = new Intent(getActivity(), DetailsPartner.class);

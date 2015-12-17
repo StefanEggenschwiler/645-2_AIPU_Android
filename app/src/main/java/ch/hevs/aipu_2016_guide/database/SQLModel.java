@@ -16,17 +16,19 @@ public class SQLModel {
         public static final String KEY_ID="IdNews";
         public static final String KEY_AUTHOR="Author";
         public static final String KEY_TITLE="Title";
-        public static final String KEY_DESCRIPTION="Description";
-        public static final String KEY_DATE="Date";
+        public static final String KEY_DESCRIPTION="article";
+        public static final String KEY_DATE="CreationDate";
+        public static final String KEY_TIMESTAMP="Lastmodified";
 
         //Creation table
         public static final String CREATE_TABLE_NEWS="Create Table "
                 +Table_News+"( "+KEY_ID
                 +" INTEGER PRIMARY KEY AUTOINCREMENT,"+KEY_AUTHOR
                 +" TEXT NOT NULL,"+KEY_TITLE
-                +" TEXT NOT NULL," +KEY_DESCRIPTION
+                +" TEXT NOT NULL,"+KEY_DESCRIPTION
                 +" TEXT NOT NULL,"+KEY_DATE
-                +" TEXT);";
+                +" TEXT NOT NULL,"+KEY_TIMESTAMP
+                +" TEXT NOT NULL);";
     }
     public abstract class PartnerEntry implements BaseColumns
     {

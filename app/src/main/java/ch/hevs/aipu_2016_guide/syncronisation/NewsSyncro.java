@@ -1,9 +1,6 @@
-package ch.hevs.aipu_2016_guide.database;
+package ch.hevs.aipu_2016_guide.syncronisation;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,19 +18,19 @@ import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.List;
 
-import ch.hevs.aipu_2016_guide.MainActivity;
+import ch.hevs.aipu_2016_guide.object.News;
 import ch.hevs.aipu_2016_guide.object.Room;
 
 /**
  * Created by Stefan Eggenschwiler on 11-Dec-15.
  */
-public class RoomsSyncro extends AsyncTask<String, Void, List<Room>> {
+public class NewsSyncro extends AsyncTask<String, Void, List<News>> {
     @Override
-    protected List<Room> doInBackground(String... params) {
+    protected List<News> doInBackground(String... params) {
         // Initialize Gson
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyyMMdd'T'HHmmssZ").create();
-        Type listType = new TypeToken<List<Room>>() {}.getType();
+        Type listType = new TypeToken<List<News>>() {}.getType();
 
         HttpURLConnection urlConnection = null;
 
@@ -50,10 +47,10 @@ public class RoomsSyncro extends AsyncTask<String, Void, List<Room>> {
                 while ((line = reader.readLine()) != null) {
                     json += line;
                 }
-                List<Room> rooms = gson.fromJson(json, listType);
+                List<News> news = gson.fromJson(json, listType);
 
 
-                return rooms;
+                return news;
 
             } catch (MalformedURLException e) {
                 // URL is invalid

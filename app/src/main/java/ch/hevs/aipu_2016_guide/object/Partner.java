@@ -2,6 +2,7 @@ package ch.hevs.aipu_2016_guide.object;
 
 import android.graphics.Bitmap;
 
+import java.sql.Blob;
 import java.util.Date;
 
 /**
@@ -9,66 +10,66 @@ import java.util.Date;
  */
 public class Partner {
 
-    private Long IdPartner;
-    private String Name;
-    private String Description;
-    private String Website;
-    private Bitmap Image;
-    private Date Timestamp;
+    private Long id;
+    private String name;
+    private String description;
+    private String website;
+    private Blob logo;
+    private Date lastmodified;
 
-    public Partner(Long IdPartner, String Name, String Description, String Website, Bitmap Image){
-        this.IdPartner = IdPartner;
-        this.Name = Name;
-        this.Description = Description;
-        this.Website = Website;
-        this.Image = Image;
+    public Partner(Long IdPartner, String Name, String Description, String Website, Blob Image){
+        this.id = IdPartner;
+        this.name = Name;
+        this.description = Description;
+        this.website = Website;
+        this.logo = Image;
     }
 
-    public Long getIdPartner() {
-        return IdPartner;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdPartner(Long idPartner) {
-        IdPartner = idPartner;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public String getWebsite() {
-        return Website;
+        return website;
     }
 
     public void setWebsite(String website) {
-        Website = website;
+        this.website = website;
     }
 
-    public Bitmap getImage() {
-        return Image;
+    public Blob getLogo() {
+        return logo;
     }
 
-    public void setImage(Bitmap image) {
-        Image = image;
+    public void setLogo(Blob logo) {
+        this.logo = logo;
     }
 
-    public Date getTimestamp() {
-        return Timestamp;
+    public Date getLastmodified() {
+        return lastmodified;
     }
 
-    public void setTimestamp(Date timestamp) {
-        Timestamp = timestamp;
+    public void setLastmodified(Date lastmodified) {
+        this.lastmodified = lastmodified;
     }
 }
